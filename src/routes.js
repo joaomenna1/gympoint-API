@@ -6,10 +6,22 @@
 
 import { Router } from 'express';
 
+import UserController from './app/controllers/UserController';
+import SessionController from './app/controllers/SessionController';
+import StudentController from './app/controllers/StudentController';
+
+import authMiddleware from './app/middlewares/auth';
+
 const routes = new Router();
 
-routes.get('/', (req, res) => {
-  return res.json({ message: 'Hello caraiooo' })
-})
+routes.post('/users', UserController.store);
+routes.post('/sessions', SessionController.store);
+
+routes.use(authMiddleware);
+
+routes.put('/updateuser', UserController.update);
+
+routes.post('/createStudents', StudentController.store);
+routes.put('/updateStudents', StudentController.update);
 
 export default routes;
