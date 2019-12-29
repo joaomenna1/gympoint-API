@@ -1,5 +1,4 @@
 import Sequelize, { Model } from 'sequelize';
-import bcrypt from 'bcryptjs';
 
 class Student extends Model {
   static init(sequelize) {
@@ -15,26 +14,6 @@ class Student extends Model {
     });
 
     return this;
-  }
-  /* metodos de corno */
-  checkName(name) {
-    return bcrypt.compare(name, this.name);
-  }
-
-  checkEmail(email) {
-    return bcrypt.compare(email, this.email);
-  }
-
-  checkAge(age) {
-    return bcrypt.compare(age, this.age);
-  }
-
-  checkWeight(weight) {
-    return bcrypt.compare(weight, this.weight);
-  }
-
-  checkHeight(height) {
-    return bcrypt.compare(height, this.height);
   }
 
 }
